@@ -1,0 +1,28 @@
+串口通讯
+返回数据头码：0x42  0x4d
+24 25 26 27位为温湿度，处理方法如下
+    uint16_t temp =rxbuff[24]*256+ rxbuff[25];   
+    uint16_t humi =rxbuff[26]*256+ rxbuff[27];   
+    pdata[0]=temp/10;
+    pdata[1]=temp%10;
+    pdata[2] = humi/10;
+    pdata[3] = humi%10;
+4 5 6 7位为pm2.5 pm10 处理如下
+    pdata[0] = rxbuff[6];
+    pdata[1] = rxbuff[7];
+    pdata[2] = rxbuff[4];
+    pdata[3] = rxbuff[5];
+
+data0 = ((uint16_t)pdata0[0]<<8) | pdata0[1];
+SensorData.PM2_5 =data0;
+snprintf(temp0, 13,"PM2.5: %3dug",data0);
+
+data1 = ((uint16_t)pdata0[2]<<8) | pdata0[3];
+SensorData.PM10 =data1;
+snprintf(temp1, 13,"PM10: %4dug",data1);
+
+tsp为计算出来的 处理如下
+data1 = ((float)(((uint16_t)pdata1[2]<<8) | pdata1[3]) / 0.7) + 0.5;
+SensorData.TSP = data1;
+snprintf(temp1, 13,"TSP: %5dug", data1);
+		

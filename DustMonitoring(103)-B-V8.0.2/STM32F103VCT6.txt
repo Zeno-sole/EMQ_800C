@@ -1,0 +1,14 @@
+68 PA9          USART1_TX   LED显示屏
+69 PA10         USART1_RX   LED显示屏
+
+25 PA2          USART2_TX   GPRS  OK
+26 PA3          USART2_RX   GPRS  OK
+
+47 PB10         USART3_TX   PM2.5/PM10/温度/湿度
+48 PB11         USART3_RX   PM2.5/PM10/温度/湿度
+
+78 PC10         UART4_TX   RS3485    风速/风向
+79 PC11         UART4_RX   RS3485    风速/风向
+
+80 PC12         UART5_TX   编号配置和调试串口
+83 PD2          UART5_RX   编号配置和调试串口
